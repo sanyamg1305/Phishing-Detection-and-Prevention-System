@@ -1,5 +1,3 @@
-# HI YOGESH SIR, DONT READ ME
-
 # Real-Time AI/ML-Based Phishing Detection and Prevention System
 
 ## Project Overview

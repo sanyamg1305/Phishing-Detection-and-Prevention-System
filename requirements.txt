@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+onnxruntime
+numpy
+requests
+beautifulsoup4
+tldextract
+thefuzz
+pandas
+scikit-learn
+lightgbm
+pip-system-certs; sys_platform == 'win32'

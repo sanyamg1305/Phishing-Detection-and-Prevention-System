@@ -42,12 +42,11 @@ The system operates as an end-to-end pipeline:
 ## 📂 Project Structure
 
 ```text
-.
-├── Pinnacle6_V2.ipynb              # Model Training & Research Notebook
+├── main.py                         # FastAPI web server for real-time predictions
 ├── feature_extractor.py            # Core logic for 48-feature extraction
 ├── phishing_detector_realistic.onnx # Production-ready ML model
 ├── ReadMe.md                       # Documentation
-└── requirements.txt                # System dependencies (To be generated)
+└── requirements.txt                # System dependencies
 ```
 
 ---
@@ -64,8 +63,16 @@ cd Phishing-Detection-and-Prevention-System
 pip install requests beautifulsoup4 tldextract thefuzz onnxruntime pandas numpy
 ```
 
-### 3. Run Feature Extraction (Test)
-You can test the feature extractor independently:
+### 3. Run the Detection API
+Start the FastAPI server using Uvicorn:
+```bash
+pip install uvicorn
+uvicorn main:app --reload
+```
+The API will be available at `http://127.0.0.1:8000`. You can visit `http://127.0.0.1:8000/docs` for the interactive Swagger UI.
+
+### 4. Run Feature Extraction (Test)
+You can also test the feature extractor independently:
 ```bash
 python feature_extractor.py
 ```

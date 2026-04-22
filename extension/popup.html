@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --safe-color: #10b981;
+            --warn-color: #f59e0b;
+            --danger-color: #ef4444;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        body {
+            width: 320px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 16px;
+            overflow-x: hidden;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .status-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .status-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .status-desc {
+            font-size: 14px;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        .details {
+            display: none;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 12px;
+            text-align: left;
+        }
+
+        .rule-item {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 6px;
+            color: #cbd5e1;
+        }
+
+        .rule-bullet {
+            color: var(--danger-color);
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-top: 10px;
+        }
+
+        .loader {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        #scan-btn {
+            width: 100%;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 16px;
+        }
+
+        #scan-btn:hover {
+            opacity: 0.9;
+        }
+
+        .score-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-text">Pinnacle 6 Shield</div>
+    </div>
+
+    <div id="loading-state" style="display: none; text-align: center; padding: 40px 0;">
+        <div class="loader"></div>
+        <p class="status-desc">Analyzing page security...</p>
+    </div>
+
+    <div id="result-state">
+        <div class="status-card" id="main-card">
+            <div id="status-icon" class="status-icon">🛡️</div>
+            <h2 id="status-text" class="status-title">Ready</h2>
+            <p id="status-url" class="status-desc">Click below to verify this site</p>
+            <div id="score-val" class="score-badge"></div>
+        </div>
+
+        <button id="scan-btn">Scan Current Page</button>
+
+        <div id="details-section" class="details">
+            <div style="font-weight: 700; margin-bottom: 8px; color: white;">Detection Details:</div>
+            <div id="rules-list"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        Powered by AI Phishing Detection Engine
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

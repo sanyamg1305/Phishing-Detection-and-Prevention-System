@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+nb_output.txt
+diagnose.py
+inspect_onnx.py
+probe_model.py
+read_nb.py
+test_model.py
